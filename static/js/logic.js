@@ -70,28 +70,28 @@ d3.json(url, createMarkers);
 
 // PART 2
 // Second API call to the Citi Bike Station Status Endpoint for station_id, num_bikes_available, is_installed, and is_renting
-var statusUrl = "https://gbfs.citibikenyc.com/gbfs/en/station_status.json"
-d3.json(statusUrl, function(data) {
-  var station = data.data.stations;
-  var station_id_list = [];
-  var num_bikes_available_list = [];
-  var is_installed_list = [];
-  var is_renting_list = [];
+// var statusUrl = "https://gbfs.citibikenyc.com/gbfs/en/station_status.json"
+// d3.json(statusUrl, function(data) {
+//   var station = data.data.stations;
+//   var station_id_list = [];
+//   var num_bikes_available_list = [];
+//   var is_installed_list = [];
+//   var is_renting_list = [];
   
-  // for loop to loop each station
-  for (var i = 0; i < station.length; i++) {
-    var station_id = station[i].station_id
-    station_id_list.push(station_id)
+//   // for loop to loop each station
+//   for (var i = 0; i < station.length; i++) {
+//     var station_id = station[i].station_id
+//     station_id_list.push(station_id)
 
-    var num_bikes_available = station[i].num_bikes_available
-    num_bikes_available_list.push(num_bikes_available)
+//     var num_bikes_available = station[i].num_bikes_available
+//     num_bikes_available_list.push(num_bikes_available)
 
-    var is_installed = station[i].is_installed
-    is_installed_list.push(is_installed)
+//     var is_installed = station[i].is_installed
+//     is_installed_list.push(is_installed)
 
-    var is_renting = station[i].is_renting
-    is_renting_list.push(is_renting)
+//     var is_renting = station[i].is_renting
+//     is_renting_list.push(is_renting)
 
-  }
-  console.log(station_id_list)
-});
+//   }
+//   console.log(station_id_list)
+// });
