@@ -44,19 +44,34 @@
   <!-- The div that hold margins etc. -->
   <main role="main" class="ml-sm-auto col-lg">
   <div class="border-bottom">
-    <h3>
+    <h2>
       Comparison of Bike Share Programs between Toronto and New York City
-    </h3>
+    </h2>
+    <br>
+    <h5><b>By Jennifer Huynh</b></h5>
+    <br>
+    <h4>Contents</h4>
+    <ul><a href="#Summary">Summary</a></ul>
+    <ul><a href="#Toronto">Toronto Bike Share User Demographics</a></ul>
+    <ul><a href="#SubscribersToronto">Casual vs. Annual subscribers in Toronto</a></ul>
+    <ul><a href="#NYC">New York City Bike Share User Demographics</a></ul>
+    <ul><a href="#Subscribers">Casual vs. Annual subscribers in NYC</a></ul>
+    <ul><a href="#Gender">Comparison of Rides by Gender in NYC</a></ul>
+    <ul><a href="#Birth">Comparison of Rides by Birth Year in NYC</a></ul>
+    <ul><a href="#Thoughts">Final Thoughts</a></ul>
 
     <p>
+
+      <br>
       A bike share station recently popped up in my quaint neighbourhood of the Bloor West Village in Toronto. 
-      I have heard about the bikeshare discount with the Presto Card and have heard of friends using the bikes. 
-      However, I have never done so myself. Upon further research into this system, I found that there is an JSON API from Open Data 
-      Toronto that shows the number of rides and stations within Toronto. Digging deeper, I also found CSV of trip data. From this, 
-      I decided to do some analysis into the demographics of the bike share users.
+      I had heard about the bike share program from friends, however, I had never used them myself. Upon further research into this system, 
+      I found that there is a JSON API from Open Data Toronto that shows the number of rides and stations within the city. 
+      Digging deeper, I also found a series CSV of trip data organized by quarter. From this, I decided to do some analysis into the demographics of 
+      the bike share users.
       <br>
       <br>
-      I found an additional API for the New York City bike share system, Citibike, and decided to compare the bike share program of the two major cities.
+      I was also interested in comparing the Toronto data with another city, so I found an additional API for the New York City bike share system, 
+      Citibike. How will the ride data compare between the two major cities?
       <br>
       <br>
       The tools used for this project are as follows:
@@ -74,11 +89,10 @@
       </ul>
     </p>
     <br>
-    <h5>Summary</h5>
+    <h3><a id="Summary">Summary</a></h3>
     <p>
       The following is a short summary of Toronto's and New York City's bike share numbers at a glace:
     </p>
-
     <div class="table-responsive"> 
     <table class="table table-striped table-sm">
       <tr>
@@ -121,19 +135,25 @@
         <td>275,318</td>
         <td>1,623,262</td>
       </tr>
+      <tr>
+        <th>Average Ride Time (2018)</th>
+        <td>728 seconds / 12.1 minutes</td>
+        <td>710 seconds / 11.8 minutes</td>
+      </tr>
     </table>
     </div>
 
     <br>
 
-    <h3>Toronto Bike Share User Demographics</h3>
+    <h3><a id="Toronto">Toronto Bike Share User Demographics</a></h3>
     <p>
       The dataset for Toronto was found in <a href= "https://open.toronto.ca/" target="_blank">Open Data Toronto</a>, 
-      which is a site that contains numerious datasets and information on the City of Toronto. This dataset used contained information on specific trips 
+      which is a site that contains numerious datasets and information on the City of Toronto. The dataset contained information on specific trips 
       like duration, start stations and end station. There is a total of 1,922,954 datapoints.
       <br>
+      <br>
       From this dataset, I first explored the data and took out outliers from the upper and lower interquartile range. After cleaning the data, 
-      I had 1,826,362 trips left to analyze and ploted the trip using Matplotlibs and Seaborn, the plot is as follows:
+      I had 1,826,362 trips left to analyze and ploted the trip using Matplotlibs and Seaborn, the plots are as follows:
       <div class="container">
         <div class="row">
           <div class="col-sm">
@@ -147,16 +167,55 @@
         </div>
       </div>
         <br>
-      From this graph, it looks like the average trip duration is about 400 seconds (about 6 minutes). This time was shorter than I had expected, 
-      but was confirmed when I ran the .count() method for the dataframe. Finally, I plotted the number of rides by trip duration for all rides with 
-      the following result:
-      <br>
-      <img src="/static/data/Number of Rides by Trip Duration (Toronto).png" alt="number of rides by trip duration toronto">
+      From the graphs, it looks like the most popular trip duration is about 400 seconds (about 6 minutes). This time was shorter than I had expected, 
+      however seeing that the statons were so close together, it makes sense for annual subscribers, who have unlimtied rides, to use the bikes frequently, and 
+      at shorter intervals.
     </p>
+    <br>
+
+    <h3><a id="SubscribersToronto">Casual vs. Annual Subscribers in Toronto</a></h3>
+    <p>
+      As shown in the table above, in 2018, Toronto had 1,551,044 subscribers and 275,318 casual users. However, the duration of the trips varied wildly 
+      for these users. The two graphs below shows a comparison of the duration of trips by casual riders and subscribers.
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <img src="/static/data/Number of trips by time in Toronto for Annual users.png" alt="Number of trips by time in Toronto for Annual users">
+          </div>
+          <div class="col-sm">
+            <img src="/static/data/Number of trips by time in Toronto for Casual Users.png" alt="Number of trips by time in Toronto for Casual users">
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="table-responsive"> 
+        <table class="table table-striped table-sm">
+          <tr>
+            <th> </th>
+            <th>Casual Riders</th>
+            <th>Annual Subscribers</th>
+          </tr>
+          <tr>
+            <th>Total Number of Trips (2018)</th>
+            <td>1,623,262</td>
+            <td>15,100,440</td>
+          </tr>
+          <tr>
+            <th>Average Trip Time (2018)</th>
+            <td>1121 seconds / 19 mins</td>
+            <td>664 seconds / 11 mins</td>
+          </tr>
+        </table>
+        </div>
+        Most trips were taken by subscribers and it looks like many of the trips were much shorter in duration than the trips taken by casual riders. 
+        Using Seaborn, I was able to visualize the probability of each ride length of casual riders and subscribers.
+        <br>
+        <img src="/static/data/trip duration (toronto).png" alt="trip duration of annual vs casual (Toronto)">
+      </p>
 
     <br>
 
-    <h3>New York City Bike Share User Demographics</h3>
+    <h3><a id="NYC">New York City Bike Share User Demographics</a></h3>
     <p>
       The dataset for <a href="https://www.citibikenyc.com/system-data" target="_blank">Citibike</a> contained relevent information to perform the same 
       analysis that was done for the Toronto bike share program. In addition to the standard data for rides, the dataset for New York had additional 
@@ -183,10 +242,11 @@
 
     <br>
 
-    <h5>Casual vs. Annual subscribers in NYC</h5>
+    <h5><a id="Subscribers">Casual vs. Annual subscribers in NYC</a></h5>
     <p>
     As shown in the table above, in 2018, NYC had 15,100,440 subscribers and 1,623,262 casual users. However, the duration of the trips varied wildly 
-    for these users. The two graphs below shows a comparison of the duration of trips by casual riders and subscribers.
+    for these users, like the Toronto dataset, however, the general curve is very similar. This shows that casual and annual subscribers behave the same way in both cities.
+    The two graphs below shows a comparison of the duration of trips by casual riders and subscribers.
     <div class="container">
       <div class="row">
         <div class="col-sm">
@@ -217,15 +277,14 @@
         </tr>
       </table>
       </div>
-      Most trips were taken by subscribers and it looks like many of the trips were much shorter in duration than the trips taken by casual riders. 
-      Using Seaborn, I was able to visualize the probability of each ride length of casual riders and subscribers.
+      As with the Toronto dataset, most trips were taken by subscribers and were much shorter in duration than the trips taken by casual riders.
       <br>
       <img src="/static/data/trip duration of annual vs casual (NYC).png" alt="trip duration of annual vs casual (NYC)">
     </p>
 
 <br>
 
-    <h5>Comparison of Rides by Gender in NYC</h5>
+    <h5><a id="Gender">Comparison of Rides by Gender in NYC</a></h5>
     <p>
     A comparison of rides by gender shows a very similar story to the casual riders and subscribers. Male riders significantly out number female riders. 
     The average ride for females is slightly longer, however, the probaility of going long vs. short ride follows the same probability curve, suggesting 
@@ -256,7 +315,7 @@
 
     <br>
 
-    <h5>Comparison of Rides by Birth Year in NYC</h5>
+    <h5><a id="Birth">Comparison of Rides by Birth Year in NYC</a></h5>
     <p>
       The data ends at 2002, which would make the youngest allowed bikers to be 16 years old (when this data 
       was collected in 2018). The mean birth year of riders is 1981, making the average rider 37 years old. 
@@ -276,11 +335,25 @@
     </p>
     <br>
 
-    <h5>Final thoughts</h5>
+    <h5><a id="Thoughts">Final Thoughts</a></h5>
     <p>
-
+      The analysis of the Toronto bike share program in comparison to the New York City bike share program was a challenging but interesting one. 
+      I was very suprised by the much lower volume of rides in Toronto when compared to New York's numbers. Toronto's population is smaller, however, 
+      the volume of trips was still much smaller even when population was taken into account. I was also suprised by how short the average trip was (at 
+      around 12 minutes).
+      <br>
+      <br>
+      Additionally, the New York dataset showed that there was a much smaller number of female riders in comparison to male riders. I did not expect such 
+      a large discrepancy.
+      <br>
+      <br>
+      I am glad that these 2 bike share programs provides free and open data for analysis so anyone can gather insight on public resources. This kind of 
+      open access can really help to spread and improve knowledge of resources around the city to the public.
+      <br>
+      <br>
+      For more of my projects, please see my <a href="https://github.com/jnnhuynh-web" target ="_blank">GitHib</a>.
     </p>
-
+    <br>
   </div>
 </div>
 </main>
