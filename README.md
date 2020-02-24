@@ -5,8 +5,10 @@ A bike share station recently popped up in my quaint neighbourhood of the Bloor 
 I was also interested in comparing the Toronto data with another city, so I found an additional API for the New York City bike share system, Citibike. I have plotted all the station for both Toronto and NYC. How will the ride data compare between the two major cities?
 
 The tools used for this project are as follows:
-Jupyter Notebook for Python analysis,
-Python libraries: JSON, Pandas, Glob, Matplotlib, Seaborn,
-JavaScript with the leaflet.js library to plot the map of the Toronto and New York City bike stations,
-HTML and Bootstrap CSS to visualize and present the data.
+
+ - Jupyter Notebook for Python analysis,
+
+ - Python libraries: JSON, Pandas, Glob, Matplotlib, Seaborn,
+ - JavaScript with the leaflet.js library to plot the map of the Toronto and New York City bike stations,
+ - HTML and Bootstrap CSS to visualize and present the data.
 
