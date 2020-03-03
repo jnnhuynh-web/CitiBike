@@ -11,5 +11,5 @@ I was also interested in comparing the Toronto data with another city, so I foun
  - JavaScript with the leaflet.js library to plot the map of the Toronto and New York City bike stations,
  - HTML and Bootstrap CSS to visualize and present the data.
 
-## Screenshot
+## Screenshot:
 ![project screenshot](https://raw.githubusercontent.com/jnnhuynh-web/CitiBike/master/static/Project_Screenshot.png)
